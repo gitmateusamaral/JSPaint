@@ -1,0 +1,119 @@
+<!-- Code produced by Daniel Cavalli and Mateus Amaral-->
+<html>
+<center>
+<body>
+<br><br><br><br>
+<div id="customcursor">
+	<canvas id="canvas" width="800" height="600" style = "border:1px solid #000000;">
+	</canvas>
+ </div>
+<script src = "Files/City.js"></script>
+<script src = "Files/Engine.js"></script>
+<script src = "Files/Menu.js"></script>
+<script>
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+	// Mouse
+	{
+	var mouse_x = 0;
+	var mouse_y = 0;
+	var mouse_pressed = false;
+	}
+	var timer = 0;
+	//Tamanho
+	{
+	var zoom = 5;
+	}
+	
+	//Grid
+	{
+	var linha = 22 * zoom;
+	var coluna = 20 * zoom;
+	var grid_x = [];
+	var grid_y = [];
+	var grid_h = 40 / zoom;
+	var grid_w = 40 / zoom;
+	var color = 'red';
+	}
+	
+	//Imagens
+	{
+		var hud = {x:0,y:0,w:800,h:600, img: new Image()}
+		hud.img.src = "Images/1.png"
+		var a = {x:0,y:0,w:800,h:600, b: new Image()}
+		a.b.src = "Images/SplashScreen.png"
+		var cre2 = new Image();
+		cre2.src = "Images/Credits.png"
+		var mp = new Image();
+		mp.src = "Images/2.png"
+	}
+	var clear = 1;
+	//VAR Aleatórias
+	var scene = "abrir";
+	var E = false;
+	var D = false;
+	//Engine
+	var qe = 0;
+		function grida1()
+			{
+				for(var i = 0;i < linha;i++)
+				{
+					for (var n = 0;n < coluna;n++)
+					{
+						grid_x[i] = i * grid_w - grid_w;
+						grid_y[n] = n * grid_h;				
+						dRs(grid_x[i],grid_y[n],grid_w,grid_h,1,"white");
+					}
+				}
+			}
+			grida1();
+	
+	var abrir = function()
+	{
+		this.draw = function()
+		{
+			dI(a.b,a.x,a.y,a.w,a.h)
+		}
+		this.update = function ()
+		{
+			if(timer >= 180)
+			{
+				scene = 'Menu2';
+			}
+		}
+	}
+	var abrir = new abrir();
+	
+	function loop()
+	{
+		timer += 1;
+		switch (scene)
+		{
+			case "Menu2":
+				Menu2.draw();
+				Menu2.update();
+				break;
+			case "game":
+				game.draw();
+				game.update();
+				break;
+			case "pause":
+				pause.draw();
+				pause.update();
+				break;
+			case 'abrir':
+				abrir.draw();
+				abrir.update();
+				break;
+			case 'creditos':
+				cre.draw();
+				cre.update();
+				break;
+		}
+		setTimeout(loop,1000/60);
+	}	
+	loop();
+</script>
+</html>
+</body>
+</center>
