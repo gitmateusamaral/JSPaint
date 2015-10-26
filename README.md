@@ -12,3 +12,7 @@ JS Paint feito por [Mateus Amaral](https://github.com/gitmateusamaral) e [Daniel
 
 Nesse programa você pode pintar um canvas utilizando as cores vermelho, verde e azul(RGB).
 
+<p align="center">
+  <img src="http://i.imgur.com/S7dFZjw.png/">
+</p>
+
