@@ -1,4 +1,4 @@
-# JSPaint
+# JS Paint
 
 ###English:
 ___
